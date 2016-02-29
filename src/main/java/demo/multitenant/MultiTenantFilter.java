@@ -8,6 +8,10 @@ import static demo.multitenant.MultiTenantConstants.CURRENT_TENANT_IDENTIFIER;
 import static demo.multitenant.MultiTenantConstants.DEFAULT_TENANT_ID;
 import static demo.multitenant.MultiTenantConstants.TENANT_KEY;
 
+/**
+ * Verifies if the request has the "tenant" header and configure it as attribute.
+ * It will be used to Hibernate the multi-tenant support to define which datasource needs to be loaded.
+ */
 public class MultiTenantFilter implements Filter {
 
     @Override

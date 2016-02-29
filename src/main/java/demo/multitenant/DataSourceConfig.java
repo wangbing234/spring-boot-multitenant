@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+/**
+ * Defines the multi-tenant datasource configuration.
+ */
 @Entity
 public class DataSourceConfig implements Serializable {
 
