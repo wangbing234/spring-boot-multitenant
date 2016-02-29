@@ -4,12 +4,12 @@ That is using the [Hibernate multi-tenancy support] (https://docs.jboss.org/hibe
 
 ## Compile and package
 
-Being Maven centric, you can compile and package it without tests using `mvn clean compile -Dmaven.test.skip=true`, `mvn clean package -Dmaven.test.skip=true` or `mvn clean install -Dmaven.test.skip=true`. Once you have your war file, you can deploy it.
+Being Maven centric, you can compile and package it without tests using `mvn clean compile -Dmaven.test.skip=true`, `mvn clean package -Dmaven.test.skip=true` or `mvn clean install -Dmaven.test.skip=true`. Once you have your jar file, you can run it.
 
 ## Run it
 
 To run it you can go to the Maven target folder generated and execute the following command :
-`java -jar file.jar`
+`java -jar multitenant-XXX.jar`
 
 ## Testing
 
