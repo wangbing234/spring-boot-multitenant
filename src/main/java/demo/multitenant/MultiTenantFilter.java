@@ -25,6 +25,5 @@ public class MultiTenantFilter implements Filter {
     }
 
     @Override
-    public void destroy() {
-    }
+    public void destroy() {}
 }

@@ -2,6 +2,11 @@ package demo.multitenant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -47,9 +52,21 @@ public class TenantDataSource implements Serializable {
                     .username(config.getUsername())
                     .password(config.getPassword())
                     .url(config.getUrl());
-            return factory.build();
+            DataSource ds = factory.build();
+            if (config.getInitialize()) {
+                initialize(ds);
+            }
+            return ds;
         }
         return null;
     }
+
+    private void initialize(DataSource dataSource) {
+        ClassPathResource schemaResource = new ClassPathResource("schema.sql");
+        ClassPathResource dataResource = new ClassPathResource("data.sql");
+        ResourceDatabasePopulator populator = new ResourceDatabasePopulator(schemaResource, dataResource);
+        populator.execute(dataSource);
+    }
+
 
 }
